@@ -21,6 +21,7 @@
 
     <script>
         var computerChoices = ["r", "p", "s"];
+        var fullName = ["rock", "paper", "scissors"]
         var userChoiceText = document.getElementById("userchoice-text");
         var computerChoiceText = document.getElementById("computerchoice-text");
         var winsText = document.getElementById("wins-text");
@@ -38,10 +39,11 @@
             var userNumber = computerChoices.indexOf(userGuess);
             var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
             var computerNumber = computerChoices.indexOf(computerGuess);
+            var userFull = fullName[userNumber];
+            var compFull = fullName[computerNumber];
             if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
-                userChoiceText.textContent = "You chose: " + userGuess;
-                computerChoiceText.textContent = "The computer chose: " + computerGuess;
-            
+                userChoiceText.textContent = "You chose: " + userFull;
+                computerChoiceText.textContent = "The computer chose: " + compFull;
 
                 var result = (computerNumber + 3 - userNumber) % 3;
                 if (result == 0) {
