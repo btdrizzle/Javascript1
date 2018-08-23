@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+    <h2>Directions: press r, p, or s to shoot rock, paper, or scissors.</h2>
+    <p id="userchoice-text"></p>
+    <p id="computerchoice-text"></p>
+    <p id="winner-text"></p>
+    <p id="wins-text"></p>
+    <p id="losses-text"></p>
+    <p id="ties-text"></p>
+
+    
+
+    <script>
+        var computerChoices = ["r", "p", "s"];
+        var userChoiceText = document.getElementById("userchoice-text");
+        var computerChoiceText = document.getElementById("computerchoice-text");
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
+        var tiesText = document.getElementById("ties-text");
+        var winnerText = document.getElementById("winner-text");
+        var wins = 0;
+        var losses = 0;
+        var ties = 0;
+
+        
+        
+        document.onkeyup = function(event) {
+            var userGuess = event.key;
+            var userNumber = computerChoices.indexOf(userGuess);
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            var computerNumber = computerChoices.indexOf(computerGuess);
+            if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s")) {
+                userChoiceText.textContent = "You chose: " + userGuess;
+                computerChoiceText.textContent = "The computer chose: " + computerGuess;
+            
+
+                var result = (computerNumber + 3 - userNumber) % 3;
+                if (result == 0) {
+                    winnerText.textContent = "It's a tie!!";
+                    ties++;
+                }
+                else if (result == 1) {
+                    winnerText.textContent = "Computer wins!  Sorry 'bout ya!";
+                    losses++;
+                }
+                else {
+                    winnerText.textContent = "You win!!  Go do a happy dance!";
+                    wins++;
+                }
+            
+                winsText.textContent = "wins: " + wins;
+                lossesText.textContent = "losses: " + losses;
+                tiesText.textContent = "ties: " + ties;
+            }
+        };
+    </script>
+</body>
+</html>
